@@ -8,5 +8,11 @@ describe("Employee", () => {
       expect(employee.email).toEqual("ale@gmail.com");
       expect(employee.ID).toEqual("01");
     });
+    it("testing the getRole function that returns employee", () => {
+      const employee = new Employee("ale", "ale@gmail.com", "01");
+      const role = `Employee`;
+
+      expect(employee.getRole()).toEqual(role);
+    });
   });
 });
