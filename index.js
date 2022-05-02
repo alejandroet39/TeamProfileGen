@@ -25,40 +25,94 @@ for (let i = 0; i < qManager.length; i++) {
     name: nameManager[i],
   });
 }
-console.log(managerArray);
+// console.log(managerArray);
 
 const qEngineer = [
   "what is the engineer's name?",
   "what is the engineer's email?",
   "what is the engineer's ID?",
-  "what is the engineer's office number?",
+  "what is the engineer's gitHub?",
 ];
-const nameEngineer = ["engName", "engEmail", "engID", "engOfficeNO"];
+const nameEngineer = ["engName", "engEmail", "engID", "engGitHub"];
 
 const engArray = [];
-for (let i = 0; i < qEng.length; i++) {
+for (let i = 0; i < qEngineer.length; i++) {
   engArray.push({
     type: "input",
     message: qEngineer[i],
     name: nameEngineer[i],
   });
 }
-console.log(engArray);
+// console.log(engArray);
 
 const qIntern = [
   "what is the intern's name?",
   "what is the intern's email?",
   "what is the intern's ID?",
-  "what is the intern's office number?",
+  "what is the intern's school?",
 ];
-const nameIntern = ["intName", "intEmail", "intID", "intOfficeNO"];
+const nameIntern = ["intName", "intEmail", "intID", "intSchool"];
 
 const intArray = [];
 for (let i = 0; i < qIntern.length; i++) {
-  engArray.push({
+  intArray.push({
     type: "input",
     message: qIntern[i],
     name: nameIntern[i],
   });
 }
-console.log(intArray);
+// console.log(intArray);
+
+const menu = [
+  {
+    type: "list",
+    message: "do we still need to add more staff?",
+    name: "menu",
+    choices: ["add more interns", "add more engineers", "done and happy"],
+  },
+];
+
+const staff = [];
+
+function team() {
+  inquirer.prompt([...managerArray]).then((manager) => {
+    var myManager = new Manager(
+      manager.mgerName,
+      manager.mgerEmail,
+      manager.mgerID,
+      manager.mgerOfficeNO
+    );
+    staff.push(myManager);
+    dashboard();
+  });
+}
+function dashboard() {
+  inquirer.prompt([...menu]).then((people) => {
+    if (people.menu == "add more interns") {
+      inquirer.prompt(intArray).then((internData) => {
+        var intern = new Intern(
+          internData.intName,
+          internData.intEmail,
+          internData.intID,
+          internData.intSchool
+        );
+        staff.push(intern);
+        dashboard();
+      });
+    } else if (people.menu == "add more engineers") {
+      inquirer.prompt(engArray).then((engData) => {
+        var engineer = new Engineer(
+          engData.engName,
+          engData.engEmail,
+          engData.engID,
+          engData.engGitHub
+        );
+        staff.push(engineer);
+        dashboard();
+      });
+    } else if (people.menu == "done and happy") {
+      console.log(staff);
+    }
+  });
+}
+team();
