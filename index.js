@@ -26,3 +26,39 @@ for (let i = 0; i < qManager.length; i++) {
   });
 }
 console.log(managerArray);
+
+const qEngineer = [
+  "what is the engineer's name?",
+  "what is the engineer's email?",
+  "what is the engineer's ID?",
+  "what is the engineer's office number?",
+];
+const nameEngineer = ["engName", "engEmail", "engID", "engOfficeNO"];
+
+const engArray = [];
+for (let i = 0; i < qEng.length; i++) {
+  engArray.push({
+    type: "input",
+    message: qEngineer[i],
+    name: nameEngineer[i],
+  });
+}
+console.log(engArray);
+
+const qIntern = [
+  "what is the intern's name?",
+  "what is the intern's email?",
+  "what is the intern's ID?",
+  "what is the intern's office number?",
+];
+const nameIntern = ["intName", "intEmail", "intID", "intOfficeNO"];
+
+const intArray = [];
+for (let i = 0; i < qIntern.length; i++) {
+  engArray.push({
+    type: "input",
+    message: qIntern[i],
+    name: nameIntern[i],
+  });
+}
+console.log(intArray);
