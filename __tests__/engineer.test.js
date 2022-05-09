@@ -9,7 +9,7 @@ describe("Engineer", () => {
       expect(engineer.ID).toEqual("01");
       expect(engineer.gitHub).toEqual("userName");
     });
-    it("testing the getRole function that returns employee", () => {
+    it("testing the getRole function that returns engineer", () => {
       const engineer = new Engineer("ale", "ale@gmail.com", "01", "userName");
       const role = `Engineer`;
 
