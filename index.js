@@ -7,7 +7,8 @@ const Intern = require("./classes/intern");
 const Manager = require("./classes/manager");
 const inquirer = require("inquirer");
 const fs = require("fs");
-const requirehtml = require("./generatehtml");
+const generatehtml = require("./generatehtml");
+const { generateKey } = require("crypto");
 
 const qManager = [
   "what is the manager's name?",
@@ -112,6 +113,9 @@ function dashboard() {
       });
     } else if (people.menu == "done and happy") {
       console.log(staff);
+      fs.writeFile("staff.html", generatehtml(staff), function (err) {
+        err ? console.error(err) : console.log("success");
+      });
     }
   });
 }
