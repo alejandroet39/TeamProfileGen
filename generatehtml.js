@@ -1,5 +1,6 @@
 function generatestaff(staff) {
   const people = [];
+  console.log(staff);
   staff.forEach((Object) => {
     if (Object.getRole() == "Intern") {
       people.push(Object.getRender());
